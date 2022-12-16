@@ -1,0 +1,38 @@
+/* automatic/manual light mode */
+:root,
+:root.light {
+  --color-text-primary: #000;
+  --color-bg-primary: #fff;
+  --color-border: #000;
+}
+
+.page {
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 0 10px;
+  font-family: Arial, sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+.page__title {
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.calendar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 1px solid var(--color-border);
+}
