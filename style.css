@@ -1,3 +1,5 @@
+@import url(./vendor/fonts/fonts.css);
+
 /* automatic/manual light mode */
 :root,
 :root.light {
@@ -10,7 +12,7 @@
   min-width: 320px;
   max-width: 1280px;
   margin: 0 auto;
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   -moz-osx-font-smoothing: grayscale;
@@ -55,11 +57,12 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   row-gap: 10px;
+  column-gap: 2px;
 }
 .calendar__day {
-  padding: 0 5px;
+  padding: 8px;
   font-weight: 100;
-  font-size: 28px;
+  font-size: 18px;
   line-height: 1.2;
   text-align: center;
   border-radius: 50%;
