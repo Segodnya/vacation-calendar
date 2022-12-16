@@ -1,5 +1,4 @@
 const calendarContainer = document.querySelector(".calendar");
-const monthTemplate = document.querySelector(".template-month").content;
 const startDate = new Date("2023-01-01");
 const endDate = new Date("2023-12-31");
 const daysOfYear = [];
@@ -77,11 +76,11 @@ daysOfYear.forEach((day) => {
     if (currentDayOfWeek > 0) {
       emptyDays = currentDayOfWeek - 1;
     } else {
-      emptyDays = 6 - currentDayOfWeek;
+      emptyDays = 6;
     }
     if (emptyDays > 0) {
       for (let i = 1; i <= emptyDays; i++) {
-        let newDay = createDay(" ");
+        let newDay = createDay("");
         insertDay(newDay, currentMonth);
       }
     }
