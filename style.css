@@ -9,7 +9,6 @@
 .page {
   min-width: 320px;
   margin: 0 auto;
-  padding: 0 10px;
   font-family: Arial, sans-serif;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
@@ -31,8 +30,23 @@
 }
 
 .calendar {
+  margin: 10px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 10px;
+  border: 1px solid var(--color-border);
+}
+.calendar__month {
+  border: 1px solid var(--color-border);
+}
+.calendar__title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+}
+.calendar__area {
   border: 1px solid var(--color-border);
 }
