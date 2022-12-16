@@ -28,20 +28,67 @@ for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
   daysOfYear.push(new Date(d));
 }
 
-function createMonth(month) {
-  const monthElement = monthTemplate.querySelector(".calendar__month").cloneNode(true);
-  monthElement.querySelector(".calendar__title").textContent = month;
-  return monthElement;
+function addMonth(month) {
+  const newDiv = document.createElement("div");
+  newDiv.classList.add("calendar__month");
+  const newTitle = document.createElement("h2");
+  newTitle.classList.add("calendar__title");
+  newTitle.textContent = month;
+  const newArea = document.createElement("div");
+  newArea.classList.add("calendar__area");
+  newDiv.appendChild(newTitle);
+  newDiv.appendChild(newArea);
+  return newDiv;
 }
 
-function insertMonth(monthElement) {
-  calendarContainer.append(monthElement);
+function appendMonth(newDiv) {
+  calendarContainer.append(newDiv);
+}
+
+function createDay(day) {
+  const newDiv = document.createElement("div");
+  newDiv.classList.add("calendar__day");
+  newDiv.textContent = day;
+  return newDiv;
+}
+
+function insertDay(dayDiv, currentMonth) {
+  let currentMonthElement = document.querySelectorAll(".calendar__month")[currentMonth];
+  let areaElement = currentMonthElement.querySelector(".calendar__area");
+  areaElement.append(dayDiv);
 }
 
 daysOfYear.forEach((day) => {
-  if (day.getDate() === 1) {
-    const currentMonth = months[day.getMonth()];
-    const newMonth = createMonth(currentMonth);
-    insertMonth(newMonth);
+  let currentMonthNumber = day.getMonth();
+  let currentMonth = months[currentMonthNumber];
+  let currentDayofMonth = day.getDate();
+  if (currentDayofMonth === 1) {
+    let newMonth = addMonth(currentMonth);
+    appendMonth(newMonth);
+  }
+});
+
+daysOfYear.forEach((day) => {
+  let currentMonth = day.getMonth();
+  let currentDayofMonth = day.getDate();
+  let currentDayOfWeek = day.getDay();
+  if (currentDayofMonth === 1) {
+    let emptyDays = 0;
+    if (currentDayOfWeek > 0) {
+      emptyDays = currentDayOfWeek - 1;
+    } else {
+      emptyDays = 6 - currentDayOfWeek;
+    }
+    if (emptyDays > 0) {
+      for (let i = 1; i <= emptyDays; i++) {
+        let newDay = createDay(" ");
+        insertDay(newDay, currentMonth);
+      }
+    }
+    let newDay = createDay(currentDayofMonth);
+    insertDay(newDay, currentMonth);
+  } else {
+    let newDay = createDay(currentDayofMonth);
+    insertDay(newDay, currentMonth);
   }
 });

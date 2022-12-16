@@ -48,5 +48,8 @@
   line-height: 1.2;
 }
 .calendar__area {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
   border: 1px solid var(--color-border);
 }
