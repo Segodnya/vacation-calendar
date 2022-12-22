@@ -11,6 +11,33 @@
   <body class="page">
     <h1 class="page__title">Календарь отпусков</h1>
     <div class="calendar"></div>
-    <script src="./script.js"></script>
+    <form class="form"></form>
+    <input type="button" class="form__button form__button_type_user" value="Добавить пользователя" />
+    <template id="template-user">
+      <div class="form__user">
+        <h2 class="form__username">Пользователь 1</h2>
+        <input type="button" class="form__button_type_user-del" value="Удалить пользователя" />
+        <span class="form__caption">Цвет</span>
+        <input type="color" class="form__color" />
+        <input type="button" class="form__button form__button_type_vac" value="Добавить отпуск" />
+        <div class="form__vacation">
+          <span class="form__caption">Начало отпуска</span>
+          <input type="date" class="form__date form__date_type_start" min="2023-01-01" max="2023-12-31" />
+          <span class="form__caption">Окончание отпуска</span>
+          <input type="date" class="form__date form__date_type_end" min="2023-01-01" max="2023-12-31" />
+        </div>
+      </div>
+    </template>
+    <template id="template-vacation">
+      <div class="form__vacation">
+        <span class="form__caption">Начало отпуска</span>
+        <input type="date" class="form__date form__date_type_start" min="2023-01-01" max="2023-12-31" />
+        <span class="form__caption">Окончание отпуска</span>
+        <input type="date" class="form__date form__date_type_end" min="2023-01-01" max="2023-12-31" />
+        <input type="button" class="form__button form__button_type_vaс-del" value="Удалить отпуск" />
+      </div>
+    </template>
+    <script src="./calendar.js" defer></script>
+    <script src="./form.js" defer></script>
   </body>
 </html>

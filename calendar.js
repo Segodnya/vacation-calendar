@@ -27,7 +27,7 @@ for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
   daysOfYear.push(new Date(d));
 }
 
-function addMonth(month) {
+function createMonth(month) {
   const newDiv = document.createElement("div");
   newDiv.classList.add("calendar__month");
   const newTitle = document.createElement("h2");
@@ -40,7 +40,7 @@ function addMonth(month) {
   return newDiv;
 }
 
-function appendMonth(newDiv) {
+function insertMonth(newDiv) {
   calendarContainer.append(newDiv);
 }
 
@@ -60,34 +60,31 @@ function insertDay(dayDiv, currentMonth) {
 daysOfYear.forEach((day) => {
   let currentMonthNumber = day.getMonth();
   let currentMonth = months[currentMonthNumber];
-  let currentDayofMonth = day.getDate();
-  if (currentDayofMonth === 1) {
-    let newMonth = addMonth(currentMonth);
-    appendMonth(newMonth);
-  }
-});
-
-daysOfYear.forEach((day) => {
-  let currentMonth = day.getMonth();
-  let currentDayofMonth = day.getDate();
+  let currentDayOfMonth = day.getDate();
   let currentDayOfWeek = day.getDay();
-  if (currentDayofMonth === 1) {
+
+  if (currentDayOfMonth === 1) {
+    let newMonth = createMonth(currentMonth);
+    insertMonth(newMonth);
     let emptyDays = 0;
+
     if (currentDayOfWeek > 0) {
       emptyDays = currentDayOfWeek - 1;
     } else {
       emptyDays = 6;
     }
+
     if (emptyDays > 0) {
       for (let i = 1; i <= emptyDays; i++) {
         let newDay = createDay("");
-        insertDay(newDay, currentMonth);
+        insertDay(newDay, currentMonthNumber);
       }
     }
-    let newDay = createDay(currentDayofMonth);
-    insertDay(newDay, currentMonth);
+
+    let newDay = createDay(currentDayOfMonth);
+    insertDay(newDay, currentMonthNumber);
   } else {
-    let newDay = createDay(currentDayofMonth);
-    insertDay(newDay, currentMonth);
+    let newDay = createDay(currentDayOfMonth);
+    insertDay(newDay, currentMonthNumber);
   }
 });
