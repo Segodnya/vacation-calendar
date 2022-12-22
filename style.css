@@ -60,11 +60,10 @@
   column-gap: 2px;
 }
 .calendar__day {
+  position: relative;
   padding: 8px;
   font-weight: 100;
   font-size: 18px;
   line-height: 1.2;
   text-align: center;
-  border-radius: 50%;
-  border: 1px solid red;
 }
