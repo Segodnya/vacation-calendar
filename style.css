@@ -67,3 +67,91 @@
   line-height: 1.2;
   text-align: center;
 }
+
+.form {
+  display: flex;
+  justify-content: center;
+  max-width: 320px;
+  padding: 20px 10px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.form__button {
+  border-radius: 8px;
+}
+.form__button_type_user-add {
+  display: flex;
+  margin: 0 auto;
+}
+.form__user {
+  width: 280px;
+  min-height: 120px;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+}
+.form__username {
+  display: inline;
+  font-size: 16px;
+}
+.form__button_type_user-edit {
+  display: inline;
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+  font-weight: 900;
+}
+.form__button_type_user-del {
+  display: inline;
+  background-color: red;
+  border: 1px solid red;
+  color: #fff;
+  font-weight: 900;
+}
+.form__caption {
+  display: block;
+}
+.form__button_type_vac-add {
+  display: block;
+  margin: 10px auto 0;
+  background-color: #000;
+  border: 1px solid #000;
+  color: #fff;
+  font-weight: 900;
+}
+.form__vacation {
+  margin: 10px auto;
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #000;
+}
+.form__date {
+  display: block;
+  width: 160px;
+  height: 28px;
+}
+.form__button_type_vac-apply {
+  margin: 10px auto 0;
+  background-color: green;
+  border: 1px solid green;
+  color: #fff;
+  font-weight: 900;
+}
+.form__button_type_vac-del {
+  margin: 10px auto 0;
+  background-color: red;
+  border: 1px solid red;
+  color: #fff;
+  font-weight: 900;
+}
+
+.footer {
+  padding: 80px 0 40px;
+  display: flex;
+  margin: 0 auto;
+}
+.footer__title {
+  margin: 0 auto;
+  font-size: 12px;
+}

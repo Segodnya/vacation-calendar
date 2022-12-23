@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="./vendor/normalize.css" />
     <link rel="stylesheet" href="./style.css" />
     <title>Календарь отпусков</title>
@@ -12,19 +12,16 @@
     <h1 class="page__title">Календарь отпусков</h1>
     <div class="calendar"></div>
     <form class="form"></form>
-    <input type="button" class="form__button form__button_type_user" value="Добавить пользователя" />
+    <input type="button" class="form__button form__button_type_user-add" value="Добавить пользователя" />
+    <footer class="footer"><h2 class="footer__title">Проект в разработке. 2022-2023</h2></footer>
     <template id="template-user">
       <div class="form__user">
-        <h2 class="form__username">Пользователь 1</h2>
-        <input type="button" class="form__button_type_user-del" value="Удалить пользователя" />
+        <h2 class="form__username">Пользователь</h2>
+        <input type="button" class="form__button form__button_type_user-edit" value="Ред." />
+        <input type="button" class="form__button_type_user-del" value="Х" />
         <span class="form__caption">Цвет</span>
         <input type="color" class="form__color" />
-        <input type="button" class="form__button form__button_type_vac" value="Добавить отпуск" />
-        <div class="form__vacation">
-          <span class="form__caption">Начало отпуска</span>
-          <input type="date" class="form__date form__date_type_start" min="2023-01-01" max="2023-12-31" />
-          <span class="form__caption">Окончание отпуска</span>
-          <input type="date" class="form__date form__date_type_end" min="2023-01-01" max="2023-12-31" />
+        <input type="button" class="form__button form__button_type_vac-add" value="Добавить отпуск" />
         </div>
       </div>
     </template>
@@ -34,7 +31,8 @@
         <input type="date" class="form__date form__date_type_start" min="2023-01-01" max="2023-12-31" />
         <span class="form__caption">Окончание отпуска</span>
         <input type="date" class="form__date form__date_type_end" min="2023-01-01" max="2023-12-31" />
-        <input type="button" class="form__button form__button_type_vaс-del" value="Удалить отпуск" />
+        <input type="button" class="form__button form__button_type_vac-apply" value="Показать" />
+        <input type="button" class="form__button form__button_type_vac-del" value="Удалить отпуск" />
       </div>
     </template>
     <script src="./scripts/calendar.js" defer></script>
