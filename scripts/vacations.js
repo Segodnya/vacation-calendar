@@ -1,3 +1,5 @@
+// Render Vacations
+
 const renderVacationPeriod = (e) => {
   const currentVacationId = e.target.parentNode.id;
   const VacationIdString = `.${currentVacationId}`;

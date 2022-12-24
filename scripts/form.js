@@ -1,3 +1,5 @@
+// Forms Logic
+
 const form = document.querySelector(".form");
 const userDiv = document.querySelector(".form__user");
 const buttonAddUser = document.querySelector(".form__button_type_user-add");
