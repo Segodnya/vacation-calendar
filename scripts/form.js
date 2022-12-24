@@ -28,6 +28,9 @@ const addVacation = (e) => {
 };
 
 const deleteVacation = (e) => {
+  const currentVacationId = e.target.parentNode.id;
+  const VacationIdString = `.${currentVacationId}`;
+  removePrevVacationSpans(e, VacationIdString);
   e.target.parentNode.remove();
 };
 
@@ -60,6 +63,10 @@ const addUser = () => {
 };
 
 const deleteUser = (e) => {
+  const userIdString = `.${e.target.parentNode.id}`;
+  if (document.querySelectorAll(userIdString).length > 0) {
+    removePrevVacationSpans(e, userIdString);
+  }
   e.target.parentNode.remove();
 };
 

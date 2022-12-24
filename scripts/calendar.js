@@ -88,3 +88,19 @@ daysOfYear.forEach((day) => {
     insertDay(newDay, currentMonthNumber);
   }
 });
+
+// Set identificators for calendar__day divs
+
+const dayDivList = document.querySelectorAll(".calendar__day");
+let counter = 1;
+
+const setDayDivId = (div) => {
+  if (div.textContent !== "") {
+    div.id = `dayid_${counter}`;
+    counter += 1;
+  }
+};
+
+dayDivList.forEach((div) => {
+  setDayDivId(div, counter);
+});
