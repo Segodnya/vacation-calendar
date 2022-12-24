@@ -188,9 +188,21 @@
 .footer {
   padding: 80px 0 40px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
+  gap: 30px;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
 }
 .footer__title {
-  margin: 0 auto;
-  font-size: 12px;
+  display: block;
+  margin: 0;
+}
+.footer__link {
+  margin: 0;
+  text-decoration: none;
+  color: var(--color-text-primary);
 }
