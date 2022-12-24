@@ -9,10 +9,18 @@
     <title>Календарь отпусков</title>
   </head>
   <body class="page">
-    <h1 class="page__title">Календарь отпусков</h1>
-    <div class="calendar"></div>
-    <form class="form"></form>
-    <input type="button" class="form__button form__button_type_user-add" value="Добавить пользователя" />
+    <header class="header">
+      <h1 class="header__title">Календарь отпусков</h1>
+    </header>
+    <main class="content">
+      <section class="content-main">
+        <div class="calendar"></div>
+      </section>
+      <section class="content-side">
+        <form class="form"></form>
+        <input type="button" class="form__button form__button_type_user-add" value="Добавить пользователя" />
+      </section>
+    </main>
     <footer class="footer"><h2 class="footer__title">Проект в разработке. 2022-2023</h2></footer>
     <template id="template-user">
       <div class="form__user">
@@ -22,7 +30,6 @@
         <span class="form__caption">Цвет</span>
         <input type="color" class="form__color" />
         <input type="button" class="form__button form__button_type_vac-add" value="Добавить отпуск" />
-        </div>
       </div>
     </template>
     <template id="template-vacation">

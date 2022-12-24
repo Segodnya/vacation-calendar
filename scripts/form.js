@@ -6,22 +6,12 @@ const templateVacation = document.querySelector("#template-vacation").content;
 let currentUserId = new Number(1);
 let currentVacationId = new Number(1);
 
-/* const setListenerInputDate = (currentVacationDiv) => {
-  const inputDateList = currentVacationDiv.querySelectorAll(".form__date");
-  inputDateList.forEach((inputDate) => {
-    inputDate.addEventListener("change", () => {
-      console.log("change date");
-    });
-  });
-}; */
-
 const addVacation = (e) => {
   const newVacationDiv = templateVacation.querySelector(".form__vacation").cloneNode(true);
   const buttonApplyVacation = newVacationDiv.querySelector(".form__button_type_vac-apply");
   buttonApplyVacation.addEventListener("click", renderVacationPeriod);
   const buttonDeleteVacation = newVacationDiv.querySelector(".form__button_type_vac-del");
   buttonDeleteVacation.addEventListener("click", deleteVacation);
-  // setListenerInputDate(newVacationDiv);
   newVacationDiv.id = `vacationid_${currentVacationId}`;
   currentVacationId += 1;
   e.target.parentNode.append(newVacationDiv);
@@ -34,7 +24,7 @@ const deleteVacation = (e) => {
   e.target.parentNode.remove();
 };
 
-const addUser = () => {
+const addUser = (e) => {
   const newUserDiv = templateUser.querySelector(".form__user").cloneNode(true);
   const buttonDeleteUser = newUserDiv.querySelector(".form__button_type_user-del");
   if (document.querySelectorAll(".form__user").length > 0) {
@@ -44,22 +34,17 @@ const addUser = () => {
   }
   const buttonEditUser = newUserDiv.querySelector(".form__button_type_user-edit");
   buttonEditUser.addEventListener("click", (e) => {
-    const textElement = newUserDiv.querySelector(".form__username");
-    textElement.contentEditable = true;
-    textElement.focus();
-    const editUserName = (e) => {
-      e.preventDefault();
-      textElement.contentEditable = false;
-      textElement.removeEventListener("blur", editUserName);
-    };
-    textElement.addEventListener("blur", editUserName);
+    editUserNameOnAddUser(e, newUserDiv);
   });
   const buttonAddVacation = newUserDiv.querySelector(".form__button_type_vac-add");
   buttonAddVacation.addEventListener("click", addVacation);
-  // setListenerInputDate(newUserDiv);
   newUserDiv.id = `userid_${currentUserId}`;
   currentUserId += 1;
   form.append(newUserDiv);
+  // auto-edit user name on addUser event
+  if (document.querySelectorAll(".form__user").length > 1) {
+    editUserNameOnAddUser(e, newUserDiv);
+  }
 };
 
 const deleteUser = (e) => {
@@ -68,6 +53,20 @@ const deleteUser = (e) => {
     removePrevVacationSpans(e, userIdString);
   }
   e.target.parentNode.remove();
+};
+
+const editUserNameOnAddUser = (e, newUserDiv) => {
+  const textElement = newUserDiv.querySelector(".form__username");
+  textElement.contentEditable = true;
+  textElement.focus();
+  // the way to select all the text in non-input element
+  window.getSelection().selectAllChildren(textElement);
+  const editUserName = (e) => {
+    e.preventDefault();
+    textElement.contentEditable = false;
+    textElement.removeEventListener("blur", editUserName);
+  };
+  textElement.addEventListener("blur", editUserName);
 };
 
 addUser();

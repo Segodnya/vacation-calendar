@@ -3,9 +3,15 @@
 /* automatic/manual light mode */
 :root,
 :root.light {
-  --color-text-primary: #000;
-  --color-bg-primary: #fff;
-  --color-border: #000;
+  --color-text-primary: #333;
+  --color-text-secondary: #fff;
+  --color-bg-primary: #ccc;
+  --color-bg-forms: #eee;
+  --color-border: #333;
+  --color-button-black: #333;
+  --color-button-red: #c00;
+  --color-button-green: #090;
+  --color-box-shadow: rgba(0, 0, 0, 0.2);
 }
 
 .page {
@@ -23,13 +29,24 @@
   text-rendering: optimizeLegibility;
 }
 
-.page__title {
+.header__title {
   margin: 0;
   padding: 20px;
   text-align: center;
   font-weight: 900;
   font-size: 36px;
   line-height: 1.2;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+}
+
+@media screen and (max-width: 660px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
 }
 
 .calendar {
@@ -43,7 +60,8 @@
 .calendar__month {
   padding: 5px;
   border-radius: 8px;
-  box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 5px 10px var(--color-box-shadow);
+  background-color: var(--color-bg-forms);
 }
 .calendar__title {
   margin: 0;
@@ -106,10 +124,11 @@
 }
 .form__user {
   width: 280px;
-  min-height: 120px;
+  min-height: 100px;
   padding: 10px;
   border-radius: 8px;
-  box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-bg-forms);
+  box-shadow: 0px 5px 10px var(--color-box-shadow);
 }
 .form__username {
   display: inline;
@@ -117,16 +136,16 @@
 }
 .form__button_type_user-edit {
   display: inline;
-  background-color: #fff;
-  border: 1px solid #000;
-  color: #000;
+  background-color: var(--color-bg-forms);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
   font-weight: 900;
 }
 .form__button_type_user-del {
   display: inline;
-  background-color: red;
-  border: 1px solid red;
-  color: #fff;
+  background-color: var(--color-button-red);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
   font-weight: 900;
 }
 .form__caption {
@@ -135,16 +154,16 @@
 .form__button_type_vac-add {
   display: block;
   margin: 10px auto 0;
-  background-color: #000;
-  border: 1px solid #000;
-  color: #fff;
+  background-color: var(--color-button-black);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
   font-weight: 900;
 }
 .form__vacation {
   margin: 10px auto;
   padding: 5px;
   border-radius: 8px;
-  border: 1px solid #000;
+  border: 1px solid var(--color-border);
 }
 .form__date {
   display: block;
@@ -153,16 +172,16 @@
 }
 .form__button_type_vac-apply {
   margin: 10px auto 0;
-  background-color: green;
-  border: 1px solid green;
-  color: #fff;
+  background-color: var(--color-button-green);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
   font-weight: 900;
 }
 .form__button_type_vac-del {
   margin: 10px auto 0;
-  background-color: red;
-  border: 1px solid red;
-  color: #fff;
+  background-color: var(--color-button-red);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
   font-weight: 900;
 }
 

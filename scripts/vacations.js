@@ -18,6 +18,10 @@ const renderVacationPeriod = (e) => {
     newDivSpan.style = `color: ${currentColor};`;
     newDivSpan.classList.add(e.target.parentNode.id);
     newDivSpan.classList.add(e.target.parentNode.parentNode.id);
+    // scroll to the start of current vacation
+    if (i === vacationStartDay) {
+      scrollToVacationStartDiv(currentDayDiv);
+    }
   }
 };
 
@@ -46,4 +50,8 @@ const removePrevVacationSpans = (e, VacationIdString) => {
   divsToDelete.forEach((element) => {
     element.remove();
   });
+};
+
+const scrollToVacationStartDiv = (currentDayDiv) => {
+  currentDayDiv.parentNode.scrollIntoView({ behavior: "smooth" });
 };
