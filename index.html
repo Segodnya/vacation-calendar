@@ -36,17 +36,20 @@
       </div>
     </template>
     <template id="template-vacation">
-      <div class="form__vacation">
+      <form class="form__vacation">
         <span class="form__caption">Начало отпуска</span>
-        <input type="date" class="form__date form__date_type_start" min="2023-01-01" max="2023-12-31" />
+        <input type="date" name="date-start" class="form__date form__date_type_start" min="2023-01-01" max="2023-12-31" required />
+        <span class="form__error date-start-input-error"></span>
         <span class="form__caption">Окончание отпуска</span>
-        <input type="date" class="form__date form__date_type_end" min="2023-01-01" max="2023-12-31" />
+        <input type="date" name="date-end" class="form__date form__date_type_end" min="2023-01-01" max="2023-12-31" required />
+        <span class="form__error date-end-input-error"></span>
         <input type="button" class="form__button form__button_type_vac-apply" value="Показать" />
         <input type="button" class="form__button form__button_type_vac-del" value="Удалить отпуск" />
-      </div>
+      </form>
     </template>
     <script src="./scripts/calendar.js" defer></script>
     <script src="./scripts/form.js" defer></script>
     <script src="./scripts/vacations.js" defer></script>
+    <script src="./scripts/validate.js" defer></script>
   </body>
 </html>

@@ -1,9 +1,14 @@
 // Render Vacations
 
 const renderVacationPeriod = (e) => {
+  if (e.target.parentNode.querySelector(".form__vacation-period")) {
+    e.target.parentNode.querySelector(".form__vacation-period").remove();
+  }
+  if (e.target.parentNode.parentNode.querySelector(".form__user-total")) {
+    e.target.parentNode.parentNode.querySelector(".form__user-total").remove();
+  }
   const currentVacationId = e.target.parentNode.id;
   const VacationIdString = `.${currentVacationId}`;
-  console.log(document.querySelectorAll(VacationIdString).length);
   if (document.querySelectorAll(VacationIdString).length > 0) {
     removePrevVacationSpans(e, VacationIdString);
   }
@@ -25,6 +30,11 @@ const renderVacationPeriod = (e) => {
       scrollToVacationStartDiv(currentDayDiv);
     }
   }
+  // Count and render vacation time
+  const vacationTime = countVacationTime(vacationStartDay, vacationEndDay);
+  insertVacationTime(e.target.parentNode, vacationTime);
+  // count and render user total vacation days
+  insertUserTotal(e);
 };
 
 const showVacationStart = (e) => {
@@ -56,4 +66,40 @@ const removePrevVacationSpans = (e, VacationIdString) => {
 
 const scrollToVacationStartDiv = (currentDayDiv) => {
   currentDayDiv.parentNode.scrollIntoView({ behavior: "smooth" });
+};
+
+// Count and render vacation time
+const countVacationTime = (vacationStartDay, vacationEndDay) => {
+  const vacationTime = vacationEndDay - vacationStartDay + 1;
+  return vacationTime;
+};
+const insertVacationTime = (vacationDiv, vacationTime) => {
+  const spanVacationTime = document.createElement("span");
+  spanVacationTime.classList.add("form__vacation-period");
+  spanVacationTime.textContent = `Кол-во дней текущего отпуска: `;
+  vacationDiv.append(spanVacationTime);
+  const spanVacationTimeDays = document.createElement("span");
+  spanVacationTimeDays.classList.add("form__vacation-period-days");
+  spanVacationTimeDays.textContent = vacationTime;
+  spanVacationTime.append(spanVacationTimeDays);
+};
+
+// Count and render user total vacation days
+const countUserTotal = (e) => {
+  const currentUser = e.target.parentNode.parentNode;
+  const vacationPeriodSpans = currentUser.querySelectorAll(".form__vacation-period-days");
+  let totalPeriod = 0;
+  vacationPeriodSpans.forEach((element) => {
+    totalPeriod += Number(element.textContent);
+  });
+  return totalPeriod;
+};
+
+const insertUserTotal = (e) => {
+  const currentUser = e.target.parentNode.parentNode;
+  const userTotal = countUserTotal(e);
+  const spanUserTotal = document.createElement("span");
+  spanUserTotal.classList.add("form__user-total");
+  spanUserTotal.textContent = `Всего использовано дней отпуска: ${userTotal}`;
+  currentUser.append(spanUserTotal);
 };

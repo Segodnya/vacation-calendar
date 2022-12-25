@@ -17,12 +17,19 @@ const addVacation = (e) => {
   newVacationDiv.id = `vacationid_${currentVacationId}`;
   currentVacationId += 1;
   e.target.parentNode.append(newVacationDiv);
+  enableValidation(newVacationDiv, validationConfig);
+  if (e.target.parentNode.querySelector(".form__user-total")) {
+    e.target.parentNode.querySelector(".form__user-total").remove();
+  }
 };
 
 const deleteVacation = (e) => {
   const currentVacationId = e.target.parentNode.id;
   const VacationIdString = `.${currentVacationId}`;
   removePrevVacationSpans(e, VacationIdString);
+  if (e.target.parentNode.parentNode.querySelector(".form__user-total")) {
+    e.target.parentNode.parentNode.querySelector(".form__user-total").remove();
+  }
   e.target.parentNode.remove();
 };
 
@@ -42,6 +49,9 @@ const addUser = (e) => {
   buttonAddVacation.addEventListener("click", addVacation);
   newUserDiv.id = `userid_${currentUserId}`;
   currentUserId += 1;
+  // select random hex-color for user
+  let userColor = newUserDiv.querySelector(".form__color");
+  userColor.value = returnRandomHexColorString();
   form.append(newUserDiv);
   // auto-edit user name on addUser event
   if (document.querySelectorAll(".form__user").length > 1) {
@@ -70,6 +80,23 @@ const editUserNameOnAddUser = (e, newUserDiv) => {
   };
   textElement.addEventListener("blur", editUserName);
 };
+
+// Random Color for Every User
+const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+
+const getRandomNumber = () => {
+  return Math.floor(Math.random() * hex.length);
+};
+
+const returnRandomHexColorString = () => {
+  let hexColor = "#";
+  for (let i = 0; i < 6; i++) {
+    hexColor += hex[getRandomNumber()];
+  }
+  return hexColor;
+};
+
+// Start-Up Calls
 
 addUser();
 buttonAddUser.addEventListener("click", addUser);
