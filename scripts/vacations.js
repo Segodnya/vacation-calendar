@@ -22,7 +22,15 @@ const renderVacationPeriod = (e) => {
     newDivSpan.classList.add("calendar__span");
     currentDayDiv.append(newDivSpan);
     newDivSpan.textContent = ".";
+    // set css position property
+    const sibCount = countSpanSiblings(newDivSpan);
     newDivSpan.style = `color: ${currentColor};`;
+    const left = setVacationSpanPositionLeft(sibCount);
+    newDivSpan.style = `color: ${currentColor}; left: ${left};`;
+    if (sibCount > 3) {
+      const bottom = setVacationSpanPositionBottom(sibCount);
+      newDivSpan.style = `color: ${currentColor}; left: ${left}; bottom: ${bottom};`;
+    }
     newDivSpan.classList.add(e.target.parentNode.id);
     newDivSpan.classList.add(e.target.parentNode.parentNode.id);
     // scroll to the start of current vacation
@@ -102,4 +110,36 @@ const insertUserTotal = (e) => {
   spanUserTotal.classList.add("form__user-total");
   spanUserTotal.textContent = `Всего использовано дней отпуска: ${userTotal}`;
   currentUser.append(spanUserTotal);
+};
+
+// Set Vacation Spand Css Position Property
+
+const countSpanSiblings = (span) => {
+  // for collecting siblings
+  let siblings = [];
+  // if no parent, return no sibling
+  if (!span.parentNode) {
+    return siblings;
+  }
+  // first child of the parent node
+  let sibling = span.parentNode.firstChild;
+
+  // collecting siblings
+  while (sibling) {
+    if (sibling.nodeType === 1 && sibling !== span) {
+      siblings.push(sibling);
+    }
+    sibling = sibling.nextSibling;
+  }
+  return (sibCount = siblings.length);
+};
+
+const setVacationSpanPositionBottom = (sibCount) => {
+  const bottom = `${2 * Math.floor(sibCount / 4)}px`;
+  return bottom;
+};
+
+const setVacationSpanPositionLeft = (sibCount) => {
+  const left = `${8 * (3 - (sibCount % 4))}px`;
+  return left;
 };
