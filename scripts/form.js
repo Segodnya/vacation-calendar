@@ -36,11 +36,7 @@ const deleteVacation = (e) => {
 const addUser = (e) => {
   const newUserDiv = templateUser.querySelector(".form__user").cloneNode(true);
   const buttonDeleteUser = newUserDiv.querySelector(".form__button_type_user-del");
-  if (document.querySelectorAll(".form__user").length > 0) {
-    buttonDeleteUser.addEventListener("click", deleteUser);
-  } else {
-    buttonDeleteUser.remove();
-  }
+  buttonDeleteUser.addEventListener("click", deleteUser);
   const buttonEditUser = newUserDiv.querySelector(".form__button_type_user-edit");
   buttonEditUser.addEventListener("click", (e) => {
     editUserNameOnAddUser(e, newUserDiv);
@@ -90,13 +86,19 @@ const getRandomNumber = () => {
 
 const returnRandomHexColorString = () => {
   let hexColor = "#";
+  let hexColorIndexes = [];
   for (let i = 0; i < 6; i++) {
-    hexColor += hex[getRandomNumber()];
+    let randomNumber = getRandomNumber();
+    hexColor += hex[randomNumber];
+    hexColorIndexes.push(randomNumber);
+  }
+  // check is color too white compare to background color
+  if (hexColorIndexes[0] >= 10 && hexColorIndexes[2] >= 10 && hexColorIndexes[4] >= 10) {
+    returnRandomHexColorString();
   }
   return hexColor;
 };
 
 // Start-Up Calls
 
-addUser();
 buttonAddUser.addEventListener("click", addUser);

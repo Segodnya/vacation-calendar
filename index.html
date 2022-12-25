@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="./vendor/normalize.css" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Календарь отпусков</title>
+    <title>График отпусков</title>
   </head>
   <body class="page">
     <header class="header">
-      <h1 class="header__title">Календарь отпусков</h1>
+      <h1 class="header__title">График отпусков</h1>
     </header>
     <main class="content">
       <section class="content-side">
@@ -25,6 +25,13 @@
       <p class="footer__copyright">Кирилл Куренцов. 2022-2023</p>
       <a class="footer__link" href="https://github.com/Segodnya/vacation-calendar" target="_blank" rel="noopener noreferrer">Github</a>
     </footer>
+    <div class="popup">
+      <div class="popup__container" id="popup__container">
+        <h2 class="popup__title">1 Января</h2>
+        <div class="popup__content"></div>
+        <button type="button" class="popup__close-button" aria-label="Кнопка закрытия всплывающего окна"></button>
+      </div>
+    </div>
     <template id="template-user">
       <div class="form__user">
         <h2 class="form__username">Пользователь</h2>
@@ -51,5 +58,6 @@
     <script src="./scripts/form.js" defer></script>
     <script src="./scripts/vacations.js" defer></script>
     <script src="./scripts/validate.js" defer></script>
+    <script src="./scripts/popup.js" defer></script>
   </body>
 </html>

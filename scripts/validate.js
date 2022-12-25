@@ -43,9 +43,9 @@ const hasInvalidInput = (inputList) => {
 const checkDateSequence = (formElement, settings) => {
   const startDate = formElement.querySelector(settings.startDate);
   const endDate = formElement.querySelector(settings.endDate);
-
-  if (startDate.value >= endDate.value) {
-    endDate.setCustomValidity("Дата окончания отпуска не может быть меньще или равна дате начала отпуска");
+  // it works with 1-day vacation
+  if (startDate.value > endDate.value) {
+    endDate.setCustomValidity("Дата окончания отпуска не может быть меньше даты начала отпуска");
     showInputError(formElement, endDate, settings);
   } else {
     endDate.setCustomValidity("");

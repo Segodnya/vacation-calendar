@@ -105,4 +105,12 @@ const setDayDivId = (div) => {
 
 dayDivList.forEach((div) => {
   setDayDivId(div, counter);
+  div.addEventListener("click", () => {
+    openPopup(popup);
+  });
+  // find a way to make it with tap
+  div.addEventListener("click", (e) => {
+    e.preventDefault;
+    renderPopupContent(e);
+  });
 });

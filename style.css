@@ -77,13 +77,24 @@
   row-gap: 10px;
   column-gap: 2px;
 }
-.calendar__day {
+/* To ignore empty divs without dates */
+.calendar__day[id^="dayid"] {
   position: relative;
   padding: 8px;
   font-weight: 100;
   font-size: 18px;
   line-height: 1.2;
   text-align: center;
+  cursor: pointer;
+  scale: 1;
+  box-shadow: 0px 1px 2px var(--color-box-shadow);
+  transition: scale 0.3s ease-in, box-shadow 0.3s ease-in;
+  border-radius: 50%;
+}
+.calendar__day[id^="dayid"]:hover {
+  background-color: var(--color-bg-forms);
+  scale: 1.5;
+  box-shadow: 0px 5px 10px var(--color-box-shadow);
 }
 .calendar__span {
   margin: 0;
@@ -206,6 +217,85 @@
 }
 .form__error_visible {
   opacity: 1;
+}
+
+.popup {
+  display: flex;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transition: height 0ms 400ms, opacity 400ms 0ms;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.popup_opened {
+  display: flex;
+  height: 100vh;
+  opacity: 1;
+  transition: height 0ms 0ms, opacity 600ms 0ms;
+}
+.popup__container {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-forms);
+  width: 280px;
+  box-shadow: 0 0 25px var(--color-box-shadow);
+  border-radius: 10px;
+  transition: 0.5s all;
+}
+.popup__title {
+  margin: 0 auto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+.popup__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 0;
+  margin: 0;
+}
+.popup__close-button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  top: -32px;
+  right: 0;
+  background-image: url("./images/close-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-sizing: border-box;
+}
+.popup__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.popup__color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.popup__name {
+  margin: 0;
 }
 
 .footer {

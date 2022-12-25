@@ -112,10 +112,9 @@ const insertUserTotal = (e) => {
   currentUser.append(spanUserTotal);
 };
 
-// Set Vacation Spand Css Position Property
+// Set Vacation Span Css Position Property
 
 const countSpanSiblings = (span) => {
-  // for collecting siblings
   let siblings = [];
   // if no parent, return no sibling
   if (!span.parentNode) {
@@ -123,7 +122,6 @@ const countSpanSiblings = (span) => {
   }
   // first child of the parent node
   let sibling = span.parentNode.firstChild;
-
   // collecting siblings
   while (sibling) {
     if (sibling.nodeType === 1 && sibling !== span) {
