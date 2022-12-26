@@ -5,6 +5,7 @@
 :root.light {
   --color-text-primary: #333;
   --color-text-secondary: #fff;
+  --color-text-dayoff: #c00;
   --color-bg-primary: #ccc;
   --color-bg-forms: #eee;
   --color-border: #333;
@@ -76,6 +77,12 @@
   grid-template-columns: repeat(7, 1fr);
   row-gap: 10px;
   column-gap: 2px;
+}
+.calendar__day {
+  color: var(--color-text-primary);
+}
+.calendar__day_dayoff {
+  color: var(--color-text-dayoff);
 }
 /* To ignore empty divs without dates */
 .calendar__day[id^="dayid"] {

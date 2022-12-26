@@ -10,13 +10,11 @@ renderPopupContent = (e) => {
     popupContent.textContent = "Сегодня в отпуске:";
     todayVacations.forEach((vacation) => {
       vacationClassList = vacation.classList.value.split(" ");
-      // console.log(vacationClassList);
       vacationClassList.forEach((element) => {
         if (element.indexOf("user") !== -1) {
           const todayUser = element;
           const todayUserColor = document.querySelector(`#${todayUser}`).querySelector(".form__color").value;
           const todayUserName = document.querySelector(`#${todayUser}`).querySelector(".form__username").textContent;
-          // console.log(todayUserName, todayUserColor);
           const newPopupDiv = document.createElement("div");
           newPopupDiv.classList.add("popup__user");
           popupContent.append(newPopupDiv);
