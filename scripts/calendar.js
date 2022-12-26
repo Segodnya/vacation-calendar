@@ -19,10 +19,11 @@ const months = {
   11: "Декабрь",
 };
 
-// console.log(startDate.getFullYear(), "current yer");
-// console.log(startDate.getMonth(), "current month");
-// console.log(startDate.getDate(), "current day of month");
-// console.log(startDate.getDay(), "current day of week");
+// TIPS
+// Date.getFullYear(), current year;
+// Date.getMonth(), current month;
+// Date.getDate(), current day of month;
+// Date.getDay(), current day of week;
 // 0 for sunday, 6 for saturday
 
 for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
@@ -103,14 +104,12 @@ const setDayDivId = (div) => {
   }
 };
 
+// Start-Up Page Calendar Render + Pop-Up Listener for each Day Div
+
 dayDivList.forEach((div) => {
   setDayDivId(div, counter);
-  div.addEventListener("click", () => {
-    openPopup(popup);
-  });
-  // find a way to make it with tap
   div.addEventListener("click", (e) => {
-    e.preventDefault;
     renderPopupContent(e);
+    openPopup(popup);
   });
 });

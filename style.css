@@ -115,6 +115,7 @@
 }
 .form__button {
   border-radius: 8px;
+  cursor: pointer;
 }
 .form__button_type_user-add {
   display: flex;
@@ -175,6 +176,7 @@
   display: block;
   width: 160px;
   height: 28px;
+  cursor: pointer;
 }
 .form__date_type_error {
   border-bottom: 1px solid #f00;
@@ -189,6 +191,7 @@
 .form__button_type_vac-apply_disabled {
   background-color: var(--color-bg-primary);
   color: var(--color-bg-forms);
+  cursor: default;
 }
 .form__button_type_vac-del {
   margin: 10px auto 0;

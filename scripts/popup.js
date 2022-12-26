@@ -2,10 +2,10 @@ const popup = document.querySelector(".popup");
 
 renderPopupContent = (e) => {
   const popupContent = popup.querySelector(".popup__content");
-  const textMonth = e.target.parentNode.parentNode.querySelector(".calendar__title").textContent;
-  const textDay = e.target.textContent;
+  const textMonth = e.currentTarget.parentNode.parentNode.querySelector(".calendar__title").textContent;
+  const textDay = e.currentTarget.firstChild.textContent;
   popup.querySelector(".popup__title").textContent = `Дата: ${textMonth}, ${textDay}`;
-  const todayVacations = e.target.querySelectorAll(".calendar__span");
+  const todayVacations = e.currentTarget.querySelectorAll(".calendar__span");
   if (todayVacations.length > 0) {
     popupContent.textContent = "Сегодня в отпуске:";
     todayVacations.forEach((vacation) => {

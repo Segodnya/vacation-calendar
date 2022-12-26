@@ -49,10 +49,7 @@ const addUser = (e) => {
   let userColor = newUserDiv.querySelector(".form__color");
   userColor.value = returnRandomHexColorString();
   form.append(newUserDiv);
-  // auto-edit user name on addUser event
-  if (document.querySelectorAll(".form__user").length > 1) {
-    editUserNameOnAddUser(e, newUserDiv);
-  }
+  editUserNameOnAddUser(e, newUserDiv);
 };
 
 const deleteUser = (e) => {
