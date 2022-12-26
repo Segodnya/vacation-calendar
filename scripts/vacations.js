@@ -1,6 +1,7 @@
 // Render Vacations
 
-const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+const isIos = /iP(ad|od|hone)/i.test(window.navigator.userAgent);
+const isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
 
 const renderVacationPeriod = (e) => {
   if (e.target.parentNode.querySelector(".form__vacation-period")) {
@@ -64,7 +65,7 @@ const showVacationEnd = (e) => {
 const countDaysFromYearStart = (currentDate, yearStartDate) => {
   let difference = currentDate.getTime() - yearStartDate.getTime();
   let totalDays = 0;
-  if (isSafari) {
+  if (isIos && isSafari) {
     totalDays = 365 + Math.ceil(difference / (1000 * 3600 * 24));
   } else {
     totalDays = 365 + 1 + Math.ceil(difference / (1000 * 3600 * 24));
