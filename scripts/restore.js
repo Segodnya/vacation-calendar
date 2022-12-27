@@ -71,4 +71,7 @@ const restoreContent = () => {
 };
 
 document.addEventListener("click", saveContent);
+document.addEventListener("scroll", saveContent);
+document.addEventListener("wheel", saveContent);
+document.addEventListener("change", saveContent);
 restoreContent();
