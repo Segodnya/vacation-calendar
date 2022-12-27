@@ -35,29 +35,30 @@
     <template id="template-user">
       <div class="form__user">
         <h2 class="form__username" maxlength="20">Пользователь</h2>
-        <input type="button" class="form__button form__button_type_user-edit" value="Ред." />
-        <input type="button" class="form__button form__button_type_user-del" value="Х" />
+        <button type="button" class="form__button form__button_type_user-edit">Изм.</button>
+        <button type="button" class="form__button form__button_type_user-del">X</button>
         <span class="form__caption">Цвет</span>
         <input type="color" class="form__button form__color" />
-        <input type="button" class="form__button form__button_type_vac-add" value="Добавить отпуск" />
+        <button type="button" class="form__button form__button_type_vac-add">Добавить отпуск</button>
       </div>
     </template>
     <template id="template-vacation">
-      <form class="form__vacation">
+      <div class="form__vacation">
         <span class="form__caption">Начало отпуска</span>
         <input type="date" name="date-start" class="form__date form__date_type_start" min="2023-01-01" max="2023-12-31" required />
         <span class="form__error date-start-input-error"></span>
         <span class="form__caption">Окончание отпуска</span>
         <input type="date" name="date-end" class="form__date form__date_type_end" min="2023-01-01" max="2023-12-31" required />
         <span class="form__error date-end-input-error"></span>
-        <input type="button" class="form__button form__button_type_vac-apply" value="Показать" />
-        <input type="button" class="form__button form__button_type_vac-del" value="Удалить отпуск" />
-      </form>
+        <button type="button" class="form__button form__button_type_vac-apply">Показать</button>
+        <button type="button" class="form__button form__button_type_vac-del">Удалить</button>
+      </div>
     </template>
     <script src="./scripts/calendar.js" defer></script>
     <script src="./scripts/form.js" defer></script>
     <script src="./scripts/vacations.js" defer></script>
     <script src="./scripts/validate.js" defer></script>
     <script src="./scripts/popup.js" defer></script>
+    <script src="./scripts/restore.js" defer></script>
   </body>
 </html>

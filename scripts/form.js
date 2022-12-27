@@ -79,6 +79,12 @@ const editUserNameOnAddUser = (e, newUserDiv) => {
     textElement.removeEventListener("blur", editUserName);
   };
   textElement.addEventListener("blur", editUserName);
+  textElement.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      editUserName(e);
+    }
+  });
 };
 
 // Random Color for Every User
