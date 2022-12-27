@@ -21,6 +21,9 @@ const addVacation = (e) => {
   if (e.target.parentNode.querySelector(".form__user-total")) {
     e.target.parentNode.querySelector(".form__user-total").remove();
   }
+  if (e.target.parentNode.querySelector(".form__user-total-workdays")) {
+    e.target.parentNode.querySelector(".form__user-total-workdays").remove();
+  }
 };
 
 const deleteVacation = (e) => {
@@ -29,6 +32,9 @@ const deleteVacation = (e) => {
   removePrevVacationSpans(e, VacationIdString);
   if (e.target.parentNode.parentNode.querySelector(".form__user-total")) {
     e.target.parentNode.parentNode.querySelector(".form__user-total").remove();
+  }
+  if (e.target.parentNode.parentNode.querySelector(".form__user-total-working")) {
+    e.target.parentNode.parentNode.querySelector(".form__user-total-working").remove();
   }
   e.target.parentNode.remove();
 };
@@ -62,6 +68,7 @@ const deleteUser = (e) => {
 
 const editUserNameOnAddUser = (e, newUserDiv) => {
   const textElement = newUserDiv.querySelector(".form__username");
+  textElement.addEventListener("keydown", checkContentEditableLenght);
   textElement.contentEditable = true;
   textElement.focus();
   // the way to select all the text in non-input element
@@ -95,6 +102,19 @@ const returnRandomHexColorString = () => {
   }
   return hexColor;
 };
+
+// Prevent Long Names
+function checkContentEditableLenght(event) {
+  /* Any Shortcut except Ctrl + V */
+  const isValidShortcut = event.ctrlKey && event.keyCode != 86;
+  /* Backspace - Delete - Arrow Keys - Ctrl - Shift */
+  const isValidKeyCode = [8, 16, 17, 37, 38, 39, 40, 46].includes(event.keyCode);
+  const maxLength = parseInt(event.srcElement.getAttribute("maxlength"));
+  const text = event.srcElement.innerText;
+  if (text.length >= maxLength && !isValidKeyCode && !isValidShortcut) {
+    event.preventDefault();
+  }
+}
 
 // Start-Up Calls
 

@@ -1,14 +1,19 @@
 // Render Vacations
 
 const isIos = /iP(ad|od|hone)/i.test(window.navigator.userAgent);
-// const isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
 
 const renderVacationPeriod = (e) => {
   if (e.target.parentNode.querySelector(".form__vacation-period")) {
     e.target.parentNode.querySelector(".form__vacation-period").remove();
   }
+  if (e.target.parentNode.querySelector(".form__vacation-period-working")) {
+    e.target.parentNode.querySelector(".form__vacation-period-working").remove();
+  }
   if (e.target.parentNode.parentNode.querySelector(".form__user-total")) {
     e.target.parentNode.parentNode.querySelector(".form__user-total").remove();
+  }
+  if (e.target.parentNode.parentNode.querySelector(".form__user-total-workdays")) {
+    e.target.parentNode.parentNode.querySelector(".form__user-total-workdays").remove();
   }
   const currentVacationId = e.target.parentNode.id;
   const VacationIdString = `.${currentVacationId}`;
@@ -44,6 +49,8 @@ const renderVacationPeriod = (e) => {
   // Count and render vacation time
   const vacationTime = countVacationTime(vacationStartDay, vacationEndDay);
   insertVacationTime(e.target.parentNode, vacationTime);
+  const vacationTimeWorking = countVacationTimeWorking(vacationStartDay, vacationEndDay);
+  insertVacationTimeWorking(e.target.parentNode, vacationTimeWorking);
   // count and render user total vacation days
   insertUserTotal(e);
 };
@@ -89,15 +96,35 @@ const countVacationTime = (vacationStartDay, vacationEndDay) => {
   const vacationTime = vacationEndDay - vacationStartDay + 1;
   return vacationTime;
 };
+const countVacationTimeWorking = (vacationStartDay, vacationEndDay) => {
+  const calDays = document.querySelectorAll('.calendar__day[id^="dayid"]');
+  let vacationTimeWorking = 0;
+  for (i = vacationStartDay - 1; i <= vacationEndDay - 1; i++) {
+    if (!calDays[i].classList.contains("calendar__day_dayoff")) {
+      vacationTimeWorking++;
+    }
+  }
+  return vacationTimeWorking;
+};
 const insertVacationTime = (vacationDiv, vacationTime) => {
   const spanVacationTime = document.createElement("span");
   spanVacationTime.classList.add("form__vacation-period");
-  spanVacationTime.textContent = `Кол-во дней текущего отпуска: `;
+  spanVacationTime.textContent = `Кол-во календарных дней текущего отпуска: `;
   vacationDiv.append(spanVacationTime);
   const spanVacationTimeDays = document.createElement("span");
   spanVacationTimeDays.classList.add("form__vacation-period-days");
   spanVacationTimeDays.textContent = vacationTime;
   spanVacationTime.append(spanVacationTimeDays);
+};
+const insertVacationTimeWorking = (vacationDiv, vacationTimeWorking) => {
+  const spanVacationTimeWorking = document.createElement("span");
+  spanVacationTimeWorking.classList.add("form__vacation-period-working");
+  spanVacationTimeWorking.textContent = `Кол-во рабочих дней текущего отпуска: `;
+  vacationDiv.append(spanVacationTimeWorking);
+  const spanVacationTimeDaysWorking = document.createElement("span");
+  spanVacationTimeDaysWorking.classList.add("form__vacation-period-days-working");
+  spanVacationTimeDaysWorking.textContent = vacationTimeWorking;
+  spanVacationTimeWorking.append(spanVacationTimeDaysWorking);
 };
 
 // Count and render user total vacation days
@@ -110,14 +137,28 @@ const countUserTotal = (e) => {
   });
   return totalPeriod;
 };
+const countUserTotalWorkdays = (e) => {
+  const currentUser = e.target.parentNode.parentNode;
+  const vacationPeriodSpans = currentUser.querySelectorAll(".form__vacation-period-days-working");
+  let totalPeriod = 0;
+  vacationPeriodSpans.forEach((element) => {
+    totalPeriod += Number(element.textContent);
+  });
+  return totalPeriod;
+};
 
 const insertUserTotal = (e) => {
   const currentUser = e.target.parentNode.parentNode;
   const userTotal = countUserTotal(e);
   const spanUserTotal = document.createElement("span");
   spanUserTotal.classList.add("form__user-total");
-  spanUserTotal.textContent = `Всего использовано дней отпуска: ${userTotal}`;
+  spanUserTotal.textContent = `Всего календарных дней отпуска: ${userTotal}`;
   currentUser.append(spanUserTotal);
+  const userTotalWorkdays = countUserTotalWorkdays(e);
+  const spanUserTotalWorkdays = document.createElement("span");
+  spanUserTotalWorkdays.classList.add("form__user-total-workdays");
+  spanUserTotalWorkdays.textContent = `Всего рабочих дней отпуска: ${userTotalWorkdays}`;
+  currentUser.append(spanUserTotalWorkdays);
 };
 
 // Set Vacation Span Css Position Property

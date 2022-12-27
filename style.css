@@ -144,6 +144,14 @@
   font-size: 16px;
   text-align: center;
 }
+.form__user-total-workdays {
+  display: block;
+  margin: 0;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+}
 .form__username {
   display: inline;
   font-size: 16px;
@@ -212,6 +220,10 @@
   padding: 10px;
 }
 .form__vacation-period-days {
+  display: inline-block;
+  margin: 0;
+}
+.form__vacation-period-days-working {
   display: inline-block;
   margin: 0;
 }

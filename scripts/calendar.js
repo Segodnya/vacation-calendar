@@ -107,6 +107,9 @@ let counter = 1;
 const setDayDivId = (div) => {
   if (div.textContent !== "") {
     div.id = `dayid_${counter}`;
+    if (prodCalList[counter - 1] === "1") {
+      div.classList.add("calendar__day_dayoff");
+    }
     counter += 1;
   }
 };
