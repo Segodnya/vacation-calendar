@@ -52,15 +52,14 @@ const addUser = (e) => {
   newUserDiv.id = `userid_${currentUserId}`;
   currentUserId += 1;
   // select random hex-color for user
-  /* let userColor = newUserDiv.querySelector(".form__color");
+  let userColor = newUserDiv.querySelector(".form__color");
   userColor.value = returnRandomHexColorString();
   newUserDiv.addEventListener("click", (e) => {
-    if (e.target.classList.contains("form__user_hidden")) {
+    hideAllUsers(e);
+    if (e.currentTarget.classList.contains("form__user_hidden")) {
       showUser(newUserDiv);
-    } else {
-      hideUser(newUserDiv, userColor);
     }
-  }); */
+  });
   form.append(newUserDiv);
   editUserNameOnAddUser(e, newUserDiv);
 };
@@ -152,4 +151,31 @@ function checkContentEditableLenght(event) {
 
 // Start-Up Calls
 
-buttonAddUser.addEventListener("click", addUser);
+const hideAllUsers = (e) => {
+  const usersTemp = document.querySelectorAll(".form__user");
+  let counterTemp = 0;
+  let marker = 0;
+  if (e.target.classList.contains("form__button_type_user-add") && usersTemp.length !== 0) {
+    marker = usersTemp.length;
+
+    for (let i = 0; i < usersTemp.length; i++) {
+      let userColor = usersTemp[i].querySelector(".form__color");
+      hideUser(usersTemp[i], userColor);
+      counterTemp += 1;
+    }
+  } else {
+    usersTemp.forEach((element) => {
+      let userColor = element.querySelector(".form__color");
+      if (e.target.currentTarget !== element) {
+        hideUser(element, userColor);
+      } else {
+        showUser(element);
+      }
+    });
+  }
+};
+
+buttonAddUser.addEventListener("click", (e) => {
+  hideAllUsers(e);
+  addUser();
+});

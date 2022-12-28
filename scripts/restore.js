@@ -22,7 +22,6 @@ const restoreContent = () => {
     const values = localStorage.getItem("values").split(",");
     const inputs = form.querySelectorAll("input");
     for (let i = 0; i < inputs.length; i++) {
-      console.log(inputs[i].value, values[i]);
       inputs[i].value = values[i];
     }
     // Restore Event Listeners
@@ -33,14 +32,12 @@ const restoreContent = () => {
       buttonEditUser.addEventListener("click", (e) => {
         editUserNameOnAddUser(e, user);
       });
-      /* let userColor = user.querySelector(".form__color");
       user.addEventListener("click", (e) => {
-        if (e.target.classList.contains("form__user_hidden")) {
+        hideAllUsers(e);
+        if (e.currentTarget.classList.contains("form__user_hidden")) {
           showUser(user);
-        } else {
-          hideUser(user, userColor);
         }
-      }); */
+      });
     });
     // Delete user button
     const buttonsDeleteUser = document.querySelectorAll(".form__button_type_user-del");
@@ -76,7 +73,7 @@ const restoreContent = () => {
 };
 
 document.addEventListener("click", saveContent);
-document.addEventListener("scroll", saveContent);
-document.addEventListener("wheel", saveContent);
 document.addEventListener("change", saveContent);
+document.addEventListener("wheel", saveContent);
+document.addEventListener("scroll", saveContent);
 restoreContent();
