@@ -128,13 +128,15 @@
   cursor: pointer;
 }
 .form__button_type_user-add {
+  padding: 10px;
   display: flex;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 .form__user {
   width: 280px;
   min-height: 100px;
   padding: 10px;
+  font-size: 14px;
   border-radius: 8px;
   background-color: var(--color-bg-forms);
   box-shadow: 0px 5px 10px var(--color-box-shadow);
@@ -163,7 +165,11 @@
 }
 .form__username {
   display: inline;
-  font-size: 16px;
+  font-size: 14px;
+  width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .form__button_type_user-edit {
   display: inline;
@@ -197,8 +203,8 @@
   border: 1px solid var(--color-border);
 }
 .form__date {
-  display: block;
-  width: 160px;
+  display: inline;
+  width: 120px;
   height: 28px;
   cursor: pointer;
 }
@@ -238,15 +244,18 @@
 }
 .form__error {
   display: block;
-  min-height: 30px;
+  visibility: collapse;
+  min-height: 0;
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
   color: #f00;
   opacity: 0;
-  transition: opacity 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 .form__error_visible {
+  visibility: visible;
+  min-height: 30px;
   opacity: 1;
 }
 
