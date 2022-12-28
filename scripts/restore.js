@@ -26,13 +26,20 @@ const restoreContent = () => {
       inputs[i].value = values[i];
     }
     // Restore Event Listeners
-    // User name
-    // Edit name button
+    // User name & Edit name button
     const formUsers = document.querySelectorAll(".form__user");
     formUsers.forEach((user) => {
       const buttonEditUser = user.querySelector(".form__button_type_user-edit");
       buttonEditUser.addEventListener("click", (e) => {
         editUserNameOnAddUser(e, user);
+      });
+      let userColor = user.querySelector(".form__color");
+      user.addEventListener("click", (e) => {
+        if (e.target.classList.contains("form__user_hidden")) {
+          showUser(user);
+        } else {
+          hideUser(user, userColor);
+        }
       });
     });
     // Delete user button
@@ -40,14 +47,12 @@ const restoreContent = () => {
     buttonsDeleteUser.forEach((element) => {
       element.addEventListener("click", deleteUser);
     });
-    // + Color button
     // Add vacation button
     const buttonsAddVacation = document.querySelectorAll(".form__button_type_vac-add");
     buttonsAddVacation.forEach((element) => {
       element.addEventListener("click", addVacation);
     });
-    // Start input
-    // End input
+    // Start & end date inputs
     const divsVacation = document.querySelectorAll(".form__vacation");
     divsVacation.forEach((element) => {
       enableValidation(element, validationConfig);

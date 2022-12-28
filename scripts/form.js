@@ -54,6 +54,13 @@ const addUser = (e) => {
   // select random hex-color for user
   let userColor = newUserDiv.querySelector(".form__color");
   userColor.value = returnRandomHexColorString();
+  newUserDiv.addEventListener("click", (e) => {
+    if (e.target.classList.contains("form__user_hidden")) {
+      showUser(newUserDiv);
+    } else {
+      hideUser(newUserDiv, userColor);
+    }
+  });
   form.append(newUserDiv);
   editUserNameOnAddUser(e, newUserDiv);
 };
@@ -85,6 +92,27 @@ const editUserNameOnAddUser = (e, newUserDiv) => {
       editUserName(e);
     }
   });
+};
+
+// Collapse user forms
+const hideUser = (div, userColor) => {
+  div.classList.add("form__user_hidden");
+  div.style = `color: #fff; background-color: ${userColor.value};`;
+  for (const child of div.children) {
+    if (!child.classList.contains("form__username")) {
+      child.style = `visibility: collapse; opacity: 0;`;
+    }
+  }
+};
+
+const showUser = (div) => {
+  div.classList.remove("form__user_hidden");
+  div.style = "color: --color-text-primary; background-color: --color-bg-forms";
+  for (const child of div.children) {
+    if (!child.classList.contains("form__username")) {
+      child.style = "visibility: visible; opacity: 1;";
+    }
+  }
 };
 
 // Random Color for Every User

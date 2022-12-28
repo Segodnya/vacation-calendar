@@ -129,12 +129,21 @@
   margin: 0 auto;
 }
 .form__user {
+  cursor: pointer;
   width: 280px;
   min-height: 100px;
   padding: 10px;
   border-radius: 8px;
   background-color: var(--color-bg-forms);
   box-shadow: 0px 5px 10px var(--color-box-shadow);
+  transition: scale 0.3s ease-in, color 0.5s linear, background-color 0.5s ease-in, opacity 0.3s ease-in, height 0.5s ease-in, min-height 0.5s ease-in;
+}
+.form__user:hover {
+  scale: 1.1;
+}
+.form__user_hidden {
+  min-height: 20px;
+  height: 20px;
 }
 .form__user-total {
   display: block;
