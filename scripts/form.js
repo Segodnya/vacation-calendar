@@ -52,7 +52,7 @@ const addUser = (e) => {
   newUserDiv.id = `userid_${currentUserId}`;
   currentUserId += 1;
   // select random hex-color for user
-  let userColor = newUserDiv.querySelector(".form__color");
+  /* let userColor = newUserDiv.querySelector(".form__color");
   userColor.value = returnRandomHexColorString();
   newUserDiv.addEventListener("click", (e) => {
     if (e.target.classList.contains("form__user_hidden")) {
@@ -60,7 +60,7 @@ const addUser = (e) => {
     } else {
       hideUser(newUserDiv, userColor);
     }
-  });
+  }); */
   form.append(newUserDiv);
   editUserNameOnAddUser(e, newUserDiv);
 };

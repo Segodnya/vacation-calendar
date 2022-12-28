@@ -33,14 +33,14 @@ const restoreContent = () => {
       buttonEditUser.addEventListener("click", (e) => {
         editUserNameOnAddUser(e, user);
       });
-      let userColor = user.querySelector(".form__color");
+      /* let userColor = user.querySelector(".form__color");
       user.addEventListener("click", (e) => {
         if (e.target.classList.contains("form__user_hidden")) {
           showUser(user);
         } else {
           hideUser(user, userColor);
         }
-      });
+      }); */
     });
     // Delete user button
     const buttonsDeleteUser = document.querySelectorAll(".form__button_type_user-del");
