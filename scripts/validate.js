@@ -44,7 +44,7 @@ const checkDateSequence = (formElement, settings) => {
   const startDate = formElement.querySelector(settings.startDate);
   const endDate = formElement.querySelector(settings.endDate);
   // it works with 1-day vacation
-  if (startDate.value > endDate.value) {
+  if (endDate.value && startDate.value > endDate.value) {
     endDate.setCustomValidity("Дата окончания отпуска не может быть меньше даты начала отпуска");
     showInputError(formElement, endDate, settings);
   } else {

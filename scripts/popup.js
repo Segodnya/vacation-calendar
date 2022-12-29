@@ -31,7 +31,11 @@ renderPopupContent = (e) => {
     });
   } else {
     popupContent.replaceChildren();
-    popupContent.textContent = "Сегодня все на рабочих местах. Никто не в отпуске.";
+    if (e.currentTarget.classList.contains("calendar__day_dayoff")) {
+      popupContent.textContent = "Сегодня выходной (или праздник). Вряд ли на работе кто-то есть.";
+    } else {
+      popupContent.textContent = "Сегодня все на рабочих местах. Никто не в отпуске.";
+    }
   }
 };
 
