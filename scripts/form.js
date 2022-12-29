@@ -39,6 +39,17 @@ const deleteVacation = (e) => {
   e.target.parentNode.remove();
 };
 
+const hideUserByHideButton = (e) => {
+  const div = e.target.parentNode;
+  div.classList.add("form__user_hidden");
+  div.style = `color: #fff; background-color: ${div.querySelector(".form__color").value};`;
+  for (const child of div.children) {
+    if (!child.classList.contains("form__username")) {
+      child.style = `visibility: collapse; opacity: 0;`;
+    }
+  }
+};
+
 const addUser = (e) => {
   const newUserDiv = templateUser.querySelector(".form__user").cloneNode(true);
   const buttonDeleteUser = newUserDiv.querySelector(".form__button_type_user-del");
@@ -54,9 +65,11 @@ const addUser = (e) => {
   // select random hex-color for user
   let userColor = newUserDiv.querySelector(".form__color");
   userColor.value = returnRandomHexColorString();
-  newUserDiv.addEventListener("click", (e) => {
-    hideAllUsers(e);
-    if (e.currentTarget.classList.contains("form__user_hidden")) {
+  const btnHide = newUserDiv.querySelector(".form__button_type_user-hide");
+  btnHide.addEventListener("click", hideUserByHideButton);
+  newUserDiv.querySelector(".form__username").addEventListener("click", (e) => {
+    if (e.target.parentNode.classList.contains("form__user_hidden")) {
+      hideAllUsers(e);
       showUser(newUserDiv);
     }
   });

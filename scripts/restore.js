@@ -32,9 +32,11 @@ const restoreContent = () => {
       buttonEditUser.addEventListener("click", (e) => {
         editUserNameOnAddUser(e, user);
       });
-      user.addEventListener("click", (e) => {
-        hideAllUsers(e);
-        if (e.currentTarget.classList.contains("form__user_hidden")) {
+      const btnHide = user.querySelector(".form__button_type_user-hide");
+      btnHide.addEventListener("click", hideUserByHideButton);
+      user.querySelector(".form__username").addEventListener("click", (e) => {
+        if (e.target.parentNode.classList.contains("form__user_hidden")) {
+          hideAllUsers(e);
           showUser(user);
         }
       });

@@ -124,11 +124,13 @@
   gap: 10px;
 }
 .form__button {
+  margin: 0;
   border-radius: 8px;
+  height: 25px;
+  min-width: 25px;
   cursor: pointer;
 }
 .form__button_type_user-add {
-  padding: 10px;
   display: flex;
   margin: 10px auto;
 }
@@ -144,8 +146,8 @@
 }
 .form__user_hidden {
   cursor: pointer;
-  min-height: 20px;
-  height: 20px;
+  min-height: 34px;
+  height: 34px;
 }
 .form__user-total {
   display: block;
@@ -164,12 +166,11 @@
   text-align: center;
 }
 .form__username {
-  display: inline;
+  margin: 0;
+  padding: 10px;
+  display: block;
   font-size: 14px;
-  width: 200px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  width: calc(100% - 20px);
 }
 .form__button_type_user-edit {
   display: inline;
@@ -188,8 +189,12 @@
 .form__caption {
   display: block;
 }
+.form__color {
+  box-sizing: border-box;
+  vertical-align: middle;
+}
 .form__button_type_vac-add {
-  display: block;
+  display: inline;
   margin: 10px auto 0;
   background-color: var(--color-button-black);
   border: 1px solid var(--color-border);
