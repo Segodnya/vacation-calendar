@@ -134,6 +134,12 @@
   display: flex;
   margin: 10px auto;
 }
+.form__button_type_reset {
+  background-color: var(--color-button-red);
+  color: var(--color-text-secondary);
+  display: flex;
+  margin: 10px auto;
+}
 .form__user {
   width: 280px;
   min-height: 100px;

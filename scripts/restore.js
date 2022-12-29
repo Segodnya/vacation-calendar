@@ -79,3 +79,21 @@ document.addEventListener("change", saveContent);
 document.addEventListener("wheel", saveContent);
 document.addEventListener("scroll", saveContent);
 restoreContent();
+
+function resetData() {
+  const vacations = document.querySelectorAll(".form__vacation");
+  vacations.forEach((element) => {
+    element.remove();
+  });
+  const users = document.querySelectorAll(".form__user");
+  users.forEach((element) => {
+    element.remove();
+  });
+  currentUserId = Number(1);
+  currentVacationId = Number(1);
+  localStorage.clear();
+  window.location.reload();
+}
+
+const btnReset = document.querySelector(".form__button_type_reset");
+btnReset.addEventListener("click", resetData);
