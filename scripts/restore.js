@@ -94,6 +94,3 @@ function resetData() {
   localStorage.clear();
   window.location.reload();
 }
-
-const btnReset = document.querySelector(".form__button_type_reset");
-btnReset.addEventListener("click", resetData);

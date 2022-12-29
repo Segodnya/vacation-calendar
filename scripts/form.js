@@ -192,3 +192,6 @@ buttonAddUser.addEventListener("click", (e) => {
   hideAllUsers(e);
   addUser();
 });
+
+const btnReset = document.querySelector(".form__button_type_reset");
+btnReset.addEventListener("click", resetData);
